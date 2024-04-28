@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 from keras.utils import plot_model
 from keras.utils import to_categorical
 
-import scripts.study_case.CIFAR_10.input_data as input_data
+import scripts.study_case.CIFAR_10_3.input_data as input_data
 mnist = input_data.read_data_sets(one_hot=True)
 
 # Parameters
