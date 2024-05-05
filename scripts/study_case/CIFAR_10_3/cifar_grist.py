@@ -2,12 +2,6 @@
 Copy existing structure from ID_3 over, but adjust which dataset we are using
 from MNIST -> CIFAR-10
 
-INFO: Iter: 480 Current Time cost:0:00:01.364792 Loss: nan Object function value: 0.0 Change step: 0.15
-FINAL RESULTS: #ghips9_grist# Success to find NaN!  Iteration: <480> Time cost: <0:00:01.364792>.
-
-INFO: Iter: 480 Current Time cost:0:00:01.354379 Loss: nan Object function value: 0.0 Change step: 0.15
-FINAL RESULTS: #ghips9_grist# Success to find NaN!  Iteration: <480> Time cost: <0:00:01.355379>.
-
 Author: Aymeric Damien
 Project: https://github.com/aymericdamien/TensorFlow-Examples/
 '''
