@@ -13,7 +13,7 @@ sys.path.append("/data")
 
 class RBM(nn.Module):
     def __init__(self,
-                 n_vis=784,
+                 n_vis=1024,
                  n_hin=500,
                  k=5):
         super(RBM, self).__init__()
@@ -63,14 +63,14 @@ class RBM(nn.Module):
 
 batch_size = 64
 train_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('./MNIST_data', train=True, download=True,
+    datasets.CIFAR10('./CIFAR_data', train=True, download=True,
                    transform=transforms.Compose([
                        transforms.ToTensor()
                    ])),
     batch_size=batch_size)
 
 test_loader = torch.utils.data.DataLoader(
-    datasets.MNIST('./MNIST_data', train=False, transform=transforms.Compose([
+    datasets.CIFAR10('./CIFAR_data', train=False, transform=transforms.Compose([
         transforms.ToTensor()
     ])),
     batch_size=batch_size)
@@ -90,7 +90,7 @@ train_op = optim.Adam(rbm.parameters(), 0.005)
 
 loss_ = []
 while True:
-    data = Variable(data.view(-1, 784), requires_grad=True)
+    data = Variable(data.view(-1, 1024), requires_grad=True)
     sample_data = Variable(data, requires_grad=True)
     # data = Variable(data.view(-1, 784))
     # sample_data = data.bernoulli()
@@ -115,7 +115,7 @@ while True:
     except StopIteration:
         dataloader_iter = iter(train_loader)
         new_batch_xs, new_batch_ys = next(dataloader_iter)
-    new_batch_xs = Variable(new_batch_xs.view(-1, 784), requires_grad=True)
+    new_batch_xs = Variable(new_batch_xs.view(-1, 1024), requires_grad=True)
     new_data_dict = {'x': new_batch_xs, 'y': new_batch_ys}
     old_data_dict = {'x': data, 'y': target}
     data, target = gradient_search.switch_new_data(new_data_dict=new_data_dict,
